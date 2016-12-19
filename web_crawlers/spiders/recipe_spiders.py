@@ -52,7 +52,7 @@ class RecipeSpider(CrawlSpider):
     def _extract_recipe_item(self, response):
         name = self.get_recipe_name(response)
         if not name:
-            print "No data found at %s" % response.url
+            print("No data found at %s" % response.url)
             return None
         item = RecipeItem()
         item['name'] = name
@@ -67,22 +67,24 @@ class RecipeSpider(CrawlSpider):
             recipe = self._extract_recipe_item(response)
 
             if not recipe:
-                print 'No recipe found at "%s"' % response.url
+                print('No recipe found at "%s"' % response.url)
                 return
 
             outdir = '%s/extractions' % os.getcwd()
             filename = '%s/%s.txt' % (outdir, response.url.split('/')[-1])
 
             with crawl_settings.STORAGE_TYPE(filename) as storage:
-                print 'Storing Extracted Recipe:'
-                print '\tRecipe:    %s' % recipe['name']
-                print '\tWebsite:   %s' % response.url
-                print '\tFile Name: %s' % storage.get_storage_name()
+                print(
+                    'Storing Extracted Recipe:\n' \
+                    '\tRecipe:    %s' \
+                    '\tWebsite:   %s' \
+                    '\tFile Name: %s' %
+                    (recipe['name'], response.url, storage.get_storage_name()))
                 storage.write(recipe)
         except Exception as e:
             sys.stderr.write('---------------------------------------\n')
-            print traceback.print_exc(file=sys.stderr)
-            print type(e)
+            print(traceback.print_exc(file=sys.stderr))
+            print(type(e))
             sys.stderr.write('---------------------------------------\n')
             raise e
 
