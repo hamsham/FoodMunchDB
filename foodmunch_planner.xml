@@ -1,0 +1,377 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- SQL XML created by WWW SQL Designer, https://github.com/ondras/wwwsqldesigner/ -->
+<!-- Active URL: http://ondras.zarovi.cz/sql/demo/?keyword=default -->
+<sql>
+<datatypes db="mysql">
+	<group label="Numeric" color="rgb(238,238,170)">
+		<type label="Integer" length="0" sql="INTEGER" quote=""/>
+	 	<type label="TINYINT" length="0" sql="TINYINT" quote=""/>
+	 	<type label="SMALLINT" length="0" sql="SMALLINT" quote=""/>
+	 	<type label="MEDIUMINT" length="0" sql="MEDIUMINT" quote=""/>
+	 	<type label="INT" length="0" sql="INT" quote=""/>
+		<type label="BIGINT" length="0" sql="BIGINT" quote=""/>
+		<type label="Decimal" length="1" sql="DECIMAL" re="DEC" quote=""/>
+		<type label="Single precision" length="0" sql="FLOAT" quote=""/>
+		<type label="Double precision" length="0" sql="DOUBLE" re="DOUBLE" quote=""/>
+	</group>
+
+	<group label="Character" color="rgb(255,200,200)">
+		<type label="Char" length="1" sql="CHAR" quote="'"/>
+		<type label="Varchar" length="1" sql="VARCHAR" quote="'"/>
+		<type label="Text" length="0" sql="MEDIUMTEXT" re="TEXT" quote="'"/>
+		<type label="Binary" length="1" sql="BINARY" quote="'"/>
+		<type label="Varbinary" length="1" sql="VARBINARY" quote="'"/>
+		<type label="BLOB" length="0" sql="BLOB" re="BLOB" quote="'"/>
+	</group>
+
+	<group label="Date &amp; Time" color="rgb(200,255,200)">
+		<type label="Date" length="0" sql="DATE" quote="'"/>
+		<type label="Time" length="0" sql="TIME" quote="'"/>
+		<type label="Datetime" length="0" sql="DATETIME" quote="'"/>
+		<type label="Year" length="0" sql="YEAR" quote=""/>
+		<type label="Timestamp" length="0" sql="TIMESTAMP" quote="'"/>
+	</group>
+	
+	<group label="Miscellaneous" color="rgb(200,200,255)">
+		<type label="ENUM" length="1" sql="ENUM" quote=""/>
+		<type label="SET" length="1" sql="SET" quote=""/>
+		<type label="Bit" length="0" sql="bit" quote=""/>
+	</group>
+</datatypes><table x="777" y="383" name="foods">
+<row name="id" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="name" null="0" autoincrement="0">
+<datatype>VARCHAR(64)</datatype>
+<default>'NULL'</default></row>
+<row name="category" null="0" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="food_categories" row="id" />
+</row>
+<row name="date_added" null="0" autoincrement="0">
+<datatype>DATETIME</datatype>
+<default>'NULL'</default></row>
+<row name="date_modified" null="0" autoincrement="0">
+<datatype>DATETIME</datatype>
+<default>'NULL'</default></row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+</table>
+<table x="1342" y="573" name="recipes">
+<row name="id" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="name" null="0" autoincrement="0">
+<datatype>VARCHAR(64)</datatype>
+<default>'NULL'</default></row>
+<row name="prep_time" null="0" autoincrement="0">
+<datatype>INT</datatype>
+<default>NULL</default></row>
+<row name="cook_time" null="0" autoincrement="0">
+<datatype>INT</datatype>
+<default>NULL</default></row>
+<row name="num_favorites" null="0" autoincrement="0">
+<datatype>INT</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+<comment>High-level info about a recipe.</comment>
+</table>
+<table x="560" y="319" name="recipe_ingredients">
+<row name="id" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="recipe_id" null="0" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="recipes" row="id" />
+</row>
+<row name="food_id" null="0" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="foods" row="id" />
+</row>
+<row name="measurement_id" null="0" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="measurements" row="id" />
+</row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+</table>
+<table x="359" y="341" name="measurements">
+<row name="id" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="name" null="0" autoincrement="0">
+<datatype>VARCHAR(32)</datatype>
+<default>'NULL'</default></row>
+<row name="amt_per_liter" null="0" autoincrement="0">
+<datatype>FLOAT</datatype>
+<default>0.0</default></row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+</table>
+<table x="377" y="508" name="food_categories">
+<row name="id" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="name" null="0" autoincrement="0">
+<datatype>VARCHAR(32)</datatype>
+<default>'NULL'</default></row>
+<row name="date_added" null="0" autoincrement="0">
+<datatype>DATETIME</datatype>
+<default>'NULL'</default></row>
+<row name="date_modified" null="0" autoincrement="0">
+<datatype>DATETIME</datatype>
+<default>'NULL'</default></row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+<comment>Meats, fats, sugars, vegetables, etc.</comment>
+</table>
+<table x="647" y="56" name="recipe_categories">
+<row name="id" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="name" null="0" autoincrement="0">
+<datatype>VARCHAR(32)</datatype>
+<default>'NULL'</default></row>
+<row name="recipe_id" null="0" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="recipes" row="id" />
+</row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+<comment>Vegan, health, keto, paleo, normal, etc.</comment>
+</table>
+<table x="657" y="165" name="recipe_pictures">
+<row name="id" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="user_id" null="0" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="users" row="id" />
+</row>
+<row name="recipe_id" null="0" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="recipes" row="id" />
+</row>
+<row name="picture_path" null="0" autoincrement="0">
+<datatype>VARCHAR(1024)</datatype>
+<default>'NULL'</default></row>
+<row name="thumbnail_path" null="1" autoincrement="0">
+<datatype>VARCHAR(1024)</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+</table>
+<table x="563" y="631" name="recipe_modifications">
+<row name="id" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="user_id" null="0" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="users" row="id" />
+</row>
+<row name="recipe_id" null="0" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="recipes" row="id" />
+</row>
+<row name="date_modified" null="0" autoincrement="0">
+<datatype>DATETIME</datatype>
+<default>'NULL'</default></row>
+<row name="field_modified" null="0" autoincrement="0">
+<datatype>VARCHAR(64)</datatype>
+<default>'NULL'</default></row>
+<row name="comment" null="1" autoincrement="0">
+<datatype>VARCHAR(512)</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+</table>
+<table x="367" y="181" name="picture_modifications">
+<row name="id" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="picture_id" null="0" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="recipe_pictures" row="id" />
+</row>
+<row name="date_modified" null="0" autoincrement="0">
+<datatype>DATETIME</datatype>
+<default>'NULL'</default></row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+</table>
+<table x="1222" y="168" name="users">
+<row name="id" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="email" null="0" autoincrement="0">
+<datatype>VARCHAR(128)</datatype>
+<default>'NULL'</default></row>
+<row name="salt" null="0" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+<comment>High-level info about a user. NO PRIVATE DATA.</comment>
+</table>
+<table x="1681" y="204" name="user_info">
+<row name="id" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="user_id" null="0" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="users" row="id" />
+</row>
+<row name="first_name" null="0" autoincrement="0">
+<datatype>VARCHAR(64)</datatype>
+<default>'NULL'</default></row>
+<row name="middle_name" null="0" autoincrement="0">
+<datatype>VARCHAR(64)</datatype>
+<default>'NULL'</default></row>
+<row name="last_name" null="0" autoincrement="0">
+<datatype>VARCHAR(64)</datatype>
+<default>'NULL'</default></row>
+<row name="date_registered" null="0" autoincrement="0">
+<datatype>DATETIME</datatype>
+<default>'NULL'</default></row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+<comment>Semi-personal information about a user.</comment>
+</table>
+<table x="1601" y="560" name="recipe_favorites">
+<row name="id" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="user_id" null="0" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="users" row="id" />
+</row>
+<row name="recipe_id" null="0" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="recipes" row="id" />
+</row>
+<row name="date_added" null="0" autoincrement="0">
+<datatype>DATETIME</datatype>
+<default>'NULL'</default></row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+<comment>Information which can help determine who likes what recipe.</comment>
+</table>
+<table x="1798" y="479" name="user_modifications">
+<row name="id" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="user_id" null="0" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="users" row="id" />
+</row>
+<row name="date_modified" null="0" autoincrement="0">
+<datatype>DATETIME</datatype>
+<default>'NULL'</default></row>
+<row name="field_modified" null="0" autoincrement="0">
+<datatype>VARCHAR(64)</datatype>
+<default>'NULL'</default></row>
+<row name="comment" null="1" autoincrement="0">
+<datatype>VARCHAR(512)</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+<comment>For tracking any modifications to a user's profile.</comment>
+</table>
+<table x="888" y="20" name="recipe_steps">
+<row name="id" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="recipe_id" null="0" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="recipes" row="id" />
+</row>
+<row name="step_id" null="0" autoincrement="0">
+<datatype>INT</datatype>
+<default>NULL</default></row>
+<row name="comment" null="0" autoincrement="0">
+<datatype>VARCHAR(512)</datatype>
+<default>'NULL'</default></row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+<comment>For detailing the actual steps involved in making a recipe.</comment>
+</table>
+<table x="1450" y="5" name="user_pii">
+<row name="id" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="user_id" null="0" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="users" row="id" />
+</row>
+<row name="password_sha256" null="0" autoincrement="0">
+<datatype>CHAR(256)</datatype>
+<default>'NULL'</default></row>
+<row name="security_question_id" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="security_questions" row="id" />
+</row>
+<row name="security_response" null="0" autoincrement="0">
+<datatype>VARCHAR(64)</datatype>
+<default>'NULL'</default></row>
+<row name="date_modified" null="0" autoincrement="0">
+<datatype>DATETIME</datatype>
+<default>'NULL'</default></row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+<comment>Private information for individual users only.</comment>
+</table>
+<table x="2066" y="90" name="user_pii_modifications">
+<row name="id" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="pii_id" null="0" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="user_pii" row="id" />
+</row>
+<row name="user_id" null="0" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="users" row="id" />
+</row>
+<row name="date_modified" null="0" autoincrement="0">
+<datatype>DATETIME</datatype>
+<default>'NULL'</default></row>
+<row name="field_modified" null="0" autoincrement="0">
+<datatype>VARCHAR(64)</datatype>
+<default>'NULL'</default></row>
+<row name="comment" null="1" autoincrement="0">
+<datatype>VARCHAR(512)</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+<comment>Modification info for the user's PII.</comment>
+</table>
+<table x="1627" y="90" name="security_questions">
+<row name="id" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="question" null="0" autoincrement="0">
+<datatype>VARCHAR(128)</datatype>
+<default>'NULL'</default></row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+<comment>Questions for people who forgot their passwords.</comment>
+</table>
+</sql>
