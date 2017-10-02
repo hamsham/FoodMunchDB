@@ -37,7 +37,7 @@
 		<type label="SET" length="1" sql="SET" quote=""/>
 		<type label="Bit" length="0" sql="bit" quote=""/>
 	</group>
-</datatypes><table x="777" y="383" name="foods">
+</datatypes><table x="728" y="678" name="foods">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -46,8 +46,7 @@
 <default>'NULL'</default></row>
 <row name="category" null="0" autoincrement="0">
 <datatype>INTEGER</datatype>
-<default>NULL</default><relation table="food_categories" row="id" />
-</row>
+<default>NULL</default></row>
 <row name="date_added" null="0" autoincrement="0">
 <datatype>DATETIME</datatype>
 <default>'NULL'</default></row>
@@ -58,7 +57,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="1342" y="573" name="recipes">
+<table x="1167" y="635" name="recipes">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -79,7 +78,7 @@
 </key>
 <comment>High-level info about a recipe.</comment>
 </table>
-<table x="560" y="319" name="recipe_ingredients">
+<table x="500" y="558" name="recipe_ingredients">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -95,11 +94,14 @@
 <datatype>INTEGER</datatype>
 <default>NULL</default><relation table="measurements" row="id" />
 </row>
+<row name="measurement_amt" null="0" autoincrement="0">
+<datatype>DECIMAL</datatype>
+<default>NULL</default></row>
 <key type="PRIMARY" name="">
 <part>id</part>
 </key>
 </table>
-<table x="359" y="341" name="measurements">
+<table x="288" y="566" name="measurements">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -113,7 +115,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="377" y="508" name="food_categories">
+<table x="47" y="384" name="food_categories">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -131,23 +133,7 @@
 </key>
 <comment>Meats, fats, sugars, vegetables, etc.</comment>
 </table>
-<table x="647" y="56" name="recipe_categories">
-<row name="id" null="1" autoincrement="1">
-<datatype>INTEGER</datatype>
-<default>NULL</default></row>
-<row name="name" null="0" autoincrement="0">
-<datatype>VARCHAR(32)</datatype>
-<default>'NULL'</default></row>
-<row name="recipe_id" null="0" autoincrement="0">
-<datatype>INTEGER</datatype>
-<default>NULL</default><relation table="recipes" row="id" />
-</row>
-<key type="PRIMARY" name="">
-<part>id</part>
-</key>
-<comment>Vegan, health, keto, paleo, normal, etc.</comment>
-</table>
-<table x="657" y="165" name="recipe_pictures">
+<table x="597" y="404" name="recipe_pictures">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -159,17 +145,17 @@
 <datatype>INTEGER</datatype>
 <default>NULL</default><relation table="recipes" row="id" />
 </row>
-<row name="picture_path" null="0" autoincrement="0">
+<row name="picture_uri" null="0" autoincrement="0">
 <datatype>VARCHAR(1024)</datatype>
 <default>'NULL'</default></row>
-<row name="thumbnail_path" null="1" autoincrement="0">
+<row name="thumbnail_uri" null="1" autoincrement="0">
 <datatype>VARCHAR(1024)</datatype>
 <default>NULL</default></row>
 <key type="PRIMARY" name="">
 <part>id</part>
 </key>
 </table>
-<table x="563" y="631" name="recipe_modifications">
+<table x="690" y="849" name="recipe_modifications">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -194,7 +180,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="367" y="181" name="picture_modifications">
+<table x="307" y="420" name="picture_modifications">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -209,7 +195,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="1222" y="168" name="users">
+<table x="1162" y="407" name="users">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -224,7 +210,7 @@
 </key>
 <comment>High-level info about a user. NO PRIVATE DATA.</comment>
 </table>
-<table x="1681" y="204" name="user_info">
+<table x="1433" y="156" name="user_info">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -249,7 +235,7 @@
 </key>
 <comment>Semi-personal information about a user.</comment>
 </table>
-<table x="1601" y="560" name="recipe_favorites">
+<table x="1456" y="829" name="recipe_favorites">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -269,7 +255,7 @@
 </key>
 <comment>Information which can help determine who likes what recipe.</comment>
 </table>
-<table x="1798" y="479" name="user_modifications">
+<table x="1509" y="661" name="user_modifications">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -291,7 +277,7 @@
 </key>
 <comment>For tracking any modifications to a user's profile.</comment>
 </table>
-<table x="888" y="20" name="recipe_steps">
+<table x="828" y="259" name="recipe_steps">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -310,7 +296,7 @@
 </key>
 <comment>For detailing the actual steps involved in making a recipe.</comment>
 </table>
-<table x="1450" y="5" name="user_pii">
+<table x="1478" y="464" name="user_pii">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -336,7 +322,7 @@
 </key>
 <comment>Private information for individual users only.</comment>
 </table>
-<table x="2066" y="90" name="user_pii_modifications">
+<table x="1719" y="276" name="user_pii_modifications">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -362,7 +348,7 @@
 </key>
 <comment>Modification info for the user's PII.</comment>
 </table>
-<table x="1627" y="90" name="security_questions">
+<table x="1756" y="480" name="security_questions">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -373,5 +359,37 @@
 <part>id</part>
 </key>
 <comment>Questions for people who forgot their passwords.</comment>
+</table>
+<table x="493" y="283" name="categories_to_recipes">
+<row name="id" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="food_categories" row="id" />
+</row>
+<row name="category_id" null="0" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="recipe_id" null="0" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="recipes" row="id" />
+</row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+</table>
+<table x="279" y="744" name="categories_to_ingredients">
+<row name="id" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="category_id" null="0" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="food_categories" row="id" />
+</row>
+<row name="ingredient_id" null="0" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="foods" row="id" />
+</row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
 </table>
 </sql>
