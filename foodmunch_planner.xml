@@ -37,7 +37,7 @@
 		<type label="SET" length="1" sql="SET" quote=""/>
 		<type label="Bit" length="0" sql="bit" quote=""/>
 	</group>
-</datatypes><table x="728" y="678" name="foods">
+</datatypes><table x="731" y="679" name="Ingredients">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -47,17 +47,11 @@
 <row name="category" null="0" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
-<row name="date_added" null="0" autoincrement="0">
-<datatype>DATETIME</datatype>
-<default>'NULL'</default></row>
-<row name="date_modified" null="0" autoincrement="0">
-<datatype>DATETIME</datatype>
-<default>'NULL'</default></row>
 <key type="PRIMARY" name="">
 <part>id</part>
 </key>
 </table>
-<table x="1167" y="635" name="recipes">
+<table x="1167" y="635" name="Recipes">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -78,21 +72,21 @@
 </key>
 <comment>High-level info about a recipe.</comment>
 </table>
-<table x="500" y="558" name="recipe_ingredients">
+<table x="500" y="558" name="Recipe_Ingredients">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
 <row name="recipe_id" null="0" autoincrement="0">
 <datatype>INTEGER</datatype>
-<default>NULL</default><relation table="recipes" row="id" />
+<default>NULL</default><relation table="Recipes" row="id" />
 </row>
 <row name="food_id" null="0" autoincrement="0">
 <datatype>INTEGER</datatype>
-<default>NULL</default><relation table="foods" row="id" />
+<default>NULL</default><relation table="Ingredients" row="id" />
 </row>
 <row name="measurement_id" null="0" autoincrement="0">
 <datatype>INTEGER</datatype>
-<default>NULL</default><relation table="measurements" row="id" />
+<default>NULL</default><relation table="Measurements" row="id" />
 </row>
 <row name="measurement_amt" null="0" autoincrement="0">
 <datatype>DECIMAL</datatype>
@@ -101,7 +95,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="288" y="566" name="measurements">
+<table x="288" y="566" name="Measurements">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -115,35 +109,29 @@
 <part>id</part>
 </key>
 </table>
-<table x="47" y="384" name="food_categories">
+<table x="47" y="384" name="Food_Categories">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
 <row name="name" null="0" autoincrement="0">
 <datatype>VARCHAR(32)</datatype>
 <default>'NULL'</default></row>
-<row name="date_added" null="0" autoincrement="0">
-<datatype>DATETIME</datatype>
-<default>'NULL'</default></row>
-<row name="date_modified" null="0" autoincrement="0">
-<datatype>DATETIME</datatype>
-<default>'NULL'</default></row>
 <key type="PRIMARY" name="">
 <part>id</part>
 </key>
 <comment>Meats, fats, sugars, vegetables, etc.</comment>
 </table>
-<table x="597" y="404" name="recipe_pictures">
+<table x="597" y="404" name="Recipe_Pictures">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
 <row name="user_id" null="0" autoincrement="0">
 <datatype>INTEGER</datatype>
-<default>NULL</default><relation table="users" row="id" />
+<default>NULL</default><relation table="Users" row="id" />
 </row>
 <row name="recipe_id" null="0" autoincrement="0">
 <datatype>INTEGER</datatype>
-<default>NULL</default><relation table="recipes" row="id" />
+<default>NULL</default><relation table="Recipes" row="id" />
 </row>
 <row name="picture_uri" null="0" autoincrement="0">
 <datatype>VARCHAR(1024)</datatype>
@@ -155,17 +143,17 @@
 <part>id</part>
 </key>
 </table>
-<table x="690" y="849" name="recipe_modifications">
+<table x="690" y="849" name="Recipe_Modifications">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
 <row name="user_id" null="0" autoincrement="0">
 <datatype>INTEGER</datatype>
-<default>NULL</default><relation table="users" row="id" />
+<default>NULL</default><relation table="Users" row="id" />
 </row>
 <row name="recipe_id" null="0" autoincrement="0">
 <datatype>INTEGER</datatype>
-<default>NULL</default><relation table="recipes" row="id" />
+<default>NULL</default><relation table="Recipes" row="id" />
 </row>
 <row name="date_modified" null="0" autoincrement="0">
 <datatype>DATETIME</datatype>
@@ -180,13 +168,13 @@
 <part>id</part>
 </key>
 </table>
-<table x="307" y="420" name="picture_modifications">
+<table x="307" y="420" name="Picture_Modifications">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
 <row name="picture_id" null="0" autoincrement="0">
 <datatype>INTEGER</datatype>
-<default>NULL</default><relation table="recipe_pictures" row="id" />
+<default>NULL</default><relation table="Recipe_Pictures" row="id" />
 </row>
 <row name="date_modified" null="0" autoincrement="0">
 <datatype>DATETIME</datatype>
@@ -195,7 +183,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="1162" y="407" name="users">
+<table x="1162" y="407" name="Users">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -210,13 +198,13 @@
 </key>
 <comment>High-level info about a user. NO PRIVATE DATA.</comment>
 </table>
-<table x="1433" y="156" name="user_info">
+<table x="1433" y="156" name="User_Info">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
 <row name="user_id" null="0" autoincrement="0">
 <datatype>INTEGER</datatype>
-<default>NULL</default><relation table="users" row="id" />
+<default>NULL</default><relation table="Users" row="id" />
 </row>
 <row name="first_name" null="0" autoincrement="0">
 <datatype>VARCHAR(64)</datatype>
@@ -235,17 +223,17 @@
 </key>
 <comment>Semi-personal information about a user.</comment>
 </table>
-<table x="1456" y="829" name="recipe_favorites">
+<table x="1456" y="829" name="Recipe_Favorites">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
 <row name="user_id" null="0" autoincrement="0">
 <datatype>INTEGER</datatype>
-<default>NULL</default><relation table="users" row="id" />
+<default>NULL</default><relation table="Users" row="id" />
 </row>
 <row name="recipe_id" null="0" autoincrement="0">
 <datatype>INTEGER</datatype>
-<default>NULL</default><relation table="recipes" row="id" />
+<default>NULL</default><relation table="Recipes" row="id" />
 </row>
 <row name="date_added" null="0" autoincrement="0">
 <datatype>DATETIME</datatype>
@@ -255,13 +243,13 @@
 </key>
 <comment>Information which can help determine who likes what recipe.</comment>
 </table>
-<table x="1509" y="661" name="user_modifications">
+<table x="1509" y="661" name="User_Modifications">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
 <row name="user_id" null="0" autoincrement="0">
 <datatype>INTEGER</datatype>
-<default>NULL</default><relation table="users" row="id" />
+<default>NULL</default><relation table="Users" row="id" />
 </row>
 <row name="date_modified" null="0" autoincrement="0">
 <datatype>DATETIME</datatype>
@@ -277,13 +265,13 @@
 </key>
 <comment>For tracking any modifications to a user's profile.</comment>
 </table>
-<table x="828" y="259" name="recipe_steps">
+<table x="828" y="259" name="Recipe_Steps">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
 <row name="recipe_id" null="0" autoincrement="0">
 <datatype>INTEGER</datatype>
-<default>NULL</default><relation table="recipes" row="id" />
+<default>NULL</default><relation table="Recipes" row="id" />
 </row>
 <row name="step_id" null="0" autoincrement="0">
 <datatype>INT</datatype>
@@ -296,20 +284,20 @@
 </key>
 <comment>For detailing the actual steps involved in making a recipe.</comment>
 </table>
-<table x="1478" y="464" name="user_pii">
+<table x="1478" y="464" name="User_PII">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
 <row name="user_id" null="0" autoincrement="0">
 <datatype>INTEGER</datatype>
-<default>NULL</default><relation table="users" row="id" />
+<default>NULL</default><relation table="Users" row="id" />
 </row>
 <row name="password_sha256" null="0" autoincrement="0">
 <datatype>CHAR(256)</datatype>
 <default>'NULL'</default></row>
 <row name="security_question_id" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
-<default>NULL</default><relation table="security_questions" row="id" />
+<default>NULL</default><relation table="Security_Questions" row="id" />
 </row>
 <row name="security_response" null="0" autoincrement="0">
 <datatype>VARCHAR(64)</datatype>
@@ -322,17 +310,17 @@
 </key>
 <comment>Private information for individual users only.</comment>
 </table>
-<table x="1719" y="276" name="user_pii_modifications">
+<table x="1719" y="276" name="User_PII_Modifications">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
 <row name="pii_id" null="0" autoincrement="0">
 <datatype>INTEGER</datatype>
-<default>NULL</default><relation table="user_pii" row="id" />
+<default>NULL</default><relation table="User_PII" row="id" />
 </row>
 <row name="user_id" null="0" autoincrement="0">
 <datatype>INTEGER</datatype>
-<default>NULL</default><relation table="users" row="id" />
+<default>NULL</default><relation table="Users" row="id" />
 </row>
 <row name="date_modified" null="0" autoincrement="0">
 <datatype>DATETIME</datatype>
@@ -348,7 +336,7 @@
 </key>
 <comment>Modification info for the user's PII.</comment>
 </table>
-<table x="1756" y="480" name="security_questions">
+<table x="1756" y="480" name="Security_Questions">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -360,33 +348,33 @@
 </key>
 <comment>Questions for people who forgot their passwords.</comment>
 </table>
-<table x="493" y="283" name="categories_to_recipes">
+<table x="493" y="283" name="Categories_To_Recipes">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
-<default>NULL</default><relation table="food_categories" row="id" />
-</row>
+<default>NULL</default></row>
 <row name="category_id" null="0" autoincrement="0">
 <datatype>INTEGER</datatype>
-<default>NULL</default></row>
+<default>NULL</default><relation table="Food_Categories" row="id" />
+</row>
 <row name="recipe_id" null="0" autoincrement="0">
 <datatype>INTEGER</datatype>
-<default>NULL</default><relation table="recipes" row="id" />
+<default>NULL</default><relation table="Recipes" row="id" />
 </row>
 <key type="PRIMARY" name="">
 <part>id</part>
 </key>
 </table>
-<table x="279" y="744" name="categories_to_ingredients">
+<table x="279" y="744" name="Categories_To_Ingredients">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
 <row name="category_id" null="0" autoincrement="0">
 <datatype>INTEGER</datatype>
-<default>NULL</default><relation table="food_categories" row="id" />
+<default>NULL</default><relation table="Food_Categories" row="id" />
 </row>
 <row name="ingredient_id" null="0" autoincrement="0">
 <datatype>INTEGER</datatype>
-<default>NULL</default><relation table="foods" row="id" />
+<default>NULL</default><relation table="Ingredients" row="id" />
 </row>
 <key type="PRIMARY" name="">
 <part>id</part>

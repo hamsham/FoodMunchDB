@@ -1,14 +1,12 @@
 
 -- The 'foods' table is for holding all single ingredients in a recipe. These
 -- are the atoms of our food molecules.
-DROP TABLE IF EXISTS Foods;
+DROP TABLE IF EXISTS Ingredients;
 
-CREATE TABLE Foods (
+CREATE TABLE Ingredients (
   id             INTEGER     NOT NULL AUTO_INCREMENT DEFAULT NULL,
   id_str         VARCHAR(64) NOT NULL DEFAULT NULL,
   category       INTEGER     NOT NULL DEFAULT NULL,
-  date_added     TIMESTAMP   NOT NULL DEFAULT NULL,
-  date_modified  TIMESTAMP   NOT NULL DEFAULT NULL,
   PRIMARY KEY (id)
 );
 
@@ -55,7 +53,7 @@ CREATE TABLE Recipe_Ingredients (
   measurement_amt   DECIMAL     NOT NULL DEFAULT NULL,
   PRIMARY KEY (id),
   FOREIGN KEY (recipe_id)       REFERENCES Recipes(id),
-  FOREIGN KEY (food_id)         REFERENCES Foods(id),
+  FOREIGN KEY (food_id)         REFERENCES Ingredients(id),
   FOREIGN KEY (measurement_id)  REFERENCES Measurements(id)
 );
 
@@ -67,8 +65,6 @@ DROP TABLE IF EXISTS Food_Categories;
 CREATE TABLE Food_Categories (
   id            INTEGER     NOT NULL AUTO_INCREMENT DEFAULT NULL,
   id_str        VARCHAR(64) NOT NULL DEFAULT NULL,
-  date_added    TIMESTAMP   NOT NULL DEFAULT NULL,
-  date_modified TIMESTAMP   NOT NULL DEFAULT NULL,
   PRIMARY KEY (id)
 );
 
@@ -277,7 +273,7 @@ CREATE TABLE Categories_To_Recipes (
   category_id   INTEGER     NOT NULL DEFAULT NULL,
   recipe_id     INTEGER     NOT NULL DEFAULT NULL,
   PRIMARY KEY (id),
-  FOREIGN KEY (id)          REFERENCES Food_Categories (id),
+  FOREIGN KEY (category_id) REFERENCES Food_Categories (id),
   FOREIGN KEY (recipe_id)   REFERENCES Recipes (id)
 );
 
@@ -291,6 +287,6 @@ CREATE TABLE Categories_To_Ingredients (
   ingredient_id     INTEGER     NOT NULL DEFAULT NULL,
   PRIMARY KEY (id),
   FOREIGN KEY (category_id)     REFERENCES Food_Categories (id),
-  FOREIGN KEY (ingredient_id)   REFERENCES Foods (id)
+  FOREIGN KEY (ingredient_id)   REFERENCES Ingredients (id)
 );
 
